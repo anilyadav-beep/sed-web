@@ -1,0 +1,17 @@
+.hero{
+  /* display: flex; */
+  justify-content: center;
+  text-align:center;
+  padding-top:200px;
+  position:relative;
+}
+
+.hero h1{
+  font-size:64px;
+  font-weight:700;
+}
+
+.subtitle{
+  color:#666;
+  margin-top:10px;
+}

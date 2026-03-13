@@ -1,0 +1,38 @@
+.main-section {
+    height: 85vh;
+}
+
+@media (min-width: 768px) and (max-width: 1023px) {
+    /* Tablet view */
+    .main-section {
+        height: 75vh;
+    }
+  }
+  
+  @media (min-width: 1024px) {
+    /* Desktop view */
+    .main-section {
+        height: 85vh;
+    }
+  }
+
+@media (min-width: 320px) and (max-width: 350px) {
+    .btn-parent {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+    }
+    .d-brochure-btn {
+        margin: 0 0px 15px 0px !important
+    }
+}
+body, html {
+  background-color: inherit !important;
+}
+/* sedhal added */
+.mb-2 {
+    margin-bottom: 0.35em !important;
+}
+.p-0 {
+    padding: 0 !important;
+}

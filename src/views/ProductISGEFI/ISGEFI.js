@@ -1,0 +1,96 @@
+import React, { useCallback, useEffect } from 'react';
+import { useTheme } from '@mui/material/styles';
+import Box from '@mui/material/Box';
+import NoSsr from '@mui/material/NoSsr';
+import Main from 'layouts/Main';
+import Container from 'components/Container';
+import { SmallEngine } from './components';
+import isg from '../../assets/applications/ISGEFI.png';
+import mf1 from './../../assets/title/BGWhite.png';
+import ICEProductDetails from 'common/ICEProductDetails';
+import { scrollToElement, styles } from 'common/styles';
+
+const mock = {
+  image: isg,
+  description: '',
+  feature1: ' ',
+  feature2: '',
+  feature3: '',
+  title: 'Sensorless ISG + EFI',
+  date: '',
+};
+
+const Agency = () => {
+  const theme = useTheme();
+  const scrollTo = useCallback((id) => scrollToElement(id), []);
+
+  useEffect(() => {
+    const jarallaxInit = async () => {
+      const jarallaxElems = document.querySelectorAll('.jarallax');
+      if (!jarallaxElems || (jarallaxElems && jarallaxElems.length === 0)) {
+        return;
+      }
+
+      const { jarallax } = await import('jarallax');
+      jarallax(jarallaxElems, { speed: 0.2 });
+    };
+
+    jarallaxInit();
+  }, []);
+
+  return (
+    <Main>
+      <Box
+        minHeight={'100vh'}
+        display={'flex'}
+        alignItems={'center'}
+        bgcolor={''}
+        marginTop={-.7}
+        // paddingTop={5}
+      >
+        <Container>
+          <Box display={'flex'} flexDirection={'column'} alignItems={'center'}>
+            <ICEProductDetails mock={mock} type="ICE2" />
+            <Box marginTop={0}>
+              <NoSsr>
+                <Box
+                  component={'svg'}
+                  xmlns="http://www.w3.org/2000/svg"
+                  viewBox="0 0 20 20"
+                  fill="currentColor"
+                  width={{ xs: 30, sm: 40 }}
+                  height={{ xs: 30, sm: 40 }}
+                  onClick={() => scrollTo('small-engine')}
+                  sx={{ cursor: 'pointer' }}
+                >
+                  <path
+                    fillRule="evenodd"
+                    d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
+                    clipRule="evenodd"
+                  />
+                </Box>
+              </NoSsr>
+            </Box>
+          </Box>
+        </Container>
+      </Box>
+      <Box
+        className={'jarallax'}
+        data-jarallax
+        data-speed="0.2"
+        position={'relative'}
+        minHeight={'80vh'}
+        display={'flex'}
+        alignItems={'center'}
+        id="small-engine"
+      >
+        <Box className={'jarallax-img'} sx={styles(mf1, theme)} />
+        <Container>
+          <SmallEngine />
+        </Container>
+      </Box>
+    </Main>
+  );
+};
+
+export default Agency;

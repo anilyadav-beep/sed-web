@@ -1,0 +1,23 @@
+image: node:16-bullseye
+
+pipelines:
+  branches:
+    uat:
+      - step:
+          name: Build and Package for UAT
+          caches:
+            - node
+          script:
+            - apt-get update && apt-get install -y zip
+            - npm install --legacy-peer-deps
+            - npm run build
+            # 👇 ensure public/videos is copied to build/
+            - mkdir -p build/videos
+            - cp -r public/videos/* build/videos/ || true
+            # 👇 verify
+            - ls -R build/videos
+            # 👇 zip only the build folder
+            - cd build && zip -r ../app-$BITBUCKET_BUILD_NUMBER.zip .
+          artifacts:
+            - build/**
+            - app-*.zip

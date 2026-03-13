@@ -1,0 +1,22 @@
+.navbar{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  padding:20px 60px;
+}
+.logo{
+  font-size:26px;
+  font-weight:400;
+}
+.menu{
+  display:flex;
+  gap:30px;
+  list-style:none;
+}
+
+.contact-btn{
+  border:1px solid purple;
+  padding:8px 18px;
+  border-radius:20px;
+  background:white;
+}
