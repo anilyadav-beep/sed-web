@@ -11,7 +11,7 @@
     "eslint:fix": "eslint ./src --fix",
     "codeStyle:fix": "npm run prettier:fix && npm run eslint:fix",
     "clear-all": "rimraf ./build ./node_modules",
-    "test": "react-scripts test"
+    "test": "react-scripts test --passWithNoTests"
   },
   "eslintConfig": {
     "extends": [
